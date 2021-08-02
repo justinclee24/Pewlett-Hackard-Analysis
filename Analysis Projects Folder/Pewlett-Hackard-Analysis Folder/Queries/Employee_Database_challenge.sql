@@ -4,7 +4,7 @@ SELECT e.emp_no,
 	t.title,
 	t.from_date,
 	t.to_date
-INTO employee_titles
+INTO retirement_titles
 FROM employees as e
 INNER JOIN titles as t
 ON e.emp_no = t.emp_no
@@ -28,7 +28,7 @@ FROM unique_titles
 GROUP BY (title)
 ORDER BY COUNT DESC;
 
-SELECT e.emp_no,
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
 	e.first_name,
 	e.last_name,
 	e.birth_date,
